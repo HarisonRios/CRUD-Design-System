@@ -6,7 +6,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @SpringBootApplication
 @EnableJpaAuditing(auditorAwareRef = "auditorAware")
-public class CrudDesignSystemApplication {
+public class
+CrudDesignSystemApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(CrudDesignSystemApplication.class, args);
