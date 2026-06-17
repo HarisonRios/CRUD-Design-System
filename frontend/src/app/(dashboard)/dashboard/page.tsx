@@ -1,17 +1,25 @@
-import type { Metadata } from "next";
+"use client";
+
 import { Package, Tag, Users, TrendingUp, Layers, ArrowRight } from "lucide-react";
 import Link from "next/link";
-
-export const metadata: Metadata = { title: "Dashboard" };
-
-const stats = [
-  { label: "Total de Produtos", value: "—", icon: Package, color: "text-blue-500", bg: "bg-blue-500/10", href: "/products" },
-  { label: "Categorias", value: "—", icon: Tag, color: "text-purple-500", bg: "bg-purple-500/10", href: "/categories" },
-  { label: "Usuários", value: "—", icon: Users, color: "text-green-500", bg: "bg-green-500/10", href: "/users" },
-  { label: "Atividade", value: "Ao Vivo", icon: TrendingUp, color: "text-orange-500", bg: "bg-orange-500/10", href: "#" },
-];
+import { useProductCrud, useCategorycrud, useUserCrud } from "@/hooks/useCrud";
 
 export default function DashboardPage() {
+  const { useList: useProducts } = useProductCrud();
+  const { useList: useCategories } = useCategorycrud();
+  const { useList: useUsers } = useUserCrud();
+
+  const { data: products } = useProducts({ page: 0, size: 1 });
+  const { data: categories } = useCategories({ page: 0, size: 1 });
+  const { data: users } = useUsers({ page: 0, size: 1 });
+
+  const stats = [
+    { label: "Total de Produtos", value: products?.totalElements ?? "—", icon: Package, color: "text-blue-500", bg: "bg-blue-500/10", href: "/products" },
+    { label: "Categorias", value: categories?.totalElements ?? "—", icon: Tag, color: "text-purple-500", bg: "bg-purple-500/10", href: "/categories" },
+    { label: "Usuários", value: users?.totalElements ?? "—", icon: Users, color: "text-green-500", bg: "bg-green-500/10", href: "/users" },
+    { label: "Atividade", value: "Ao Vivo", icon: TrendingUp, color: "text-orange-500", bg: "bg-orange-500/10", href: "#" },
+  ];
+
   return (
     <div className="space-y-8 animate-fade-in">
       {/* Welcome Header */}
