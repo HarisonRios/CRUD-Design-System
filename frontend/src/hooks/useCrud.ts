@@ -36,10 +36,10 @@ export function useCrud<TResponse, TRequest>(
       mutationFn: (data: TRequest) => service.create(data),
       onSuccess: () => {
         queryClient.invalidateQueries({ queryKey: [queryKey] });
-        toast.success("Record created successfully!");
+        toast.success("Registro criado com sucesso!");
       },
       onError: () => {
-        toast.error("Failed to create record. Please try again.");
+        toast.error("Falha ao criar registro. Tente novamente.");
       },
     });
 
@@ -49,10 +49,10 @@ export function useCrud<TResponse, TRequest>(
         service.update(id, data),
       onSuccess: () => {
         queryClient.invalidateQueries({ queryKey: [queryKey] });
-        toast.success("Record updated successfully!");
+        toast.success("Registro atualizado com sucesso!");
       },
       onError: () => {
-        toast.error("Failed to update record. Please try again.");
+        toast.error("Falha ao atualizar registro. Tente novamente.");
       },
     });
 
@@ -61,10 +61,10 @@ export function useCrud<TResponse, TRequest>(
       mutationFn: (id: string) => service.delete(id),
       onSuccess: () => {
         queryClient.invalidateQueries({ queryKey: [queryKey] });
-        toast.success("Record deleted successfully!");
+        toast.success("Registro excluído com sucesso!");
       },
       onError: () => {
-        toast.error("Failed to delete record. Please try again.");
+        toast.error("Falha ao excluir registro. Tente novamente.");
       },
     });
 

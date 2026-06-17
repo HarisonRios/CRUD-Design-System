@@ -3,12 +3,12 @@ import type { Category, CategoryRequest } from "@/types/entities";
 
 export const categoryConfig: CrudConfig<Category, CategoryRequest> = {
   entity: "categories",
-  title: "Categories",
-  description: "Manage product categories",
+  title: "Categorias",
+  description: "Gerencie as categorias de produtos",
 
   columns: [
-    { key: "name", label: "Name", sortable: true },
-    { key: "description", label: "Description" },
+    { key: "name", label: "Nome", sortable: true },
+    { key: "description", label: "Descrição" },
     {
       key: "active",
       label: "Status",
@@ -20,16 +20,16 @@ export const categoryConfig: CrudConfig<Category, CategoryRequest> = {
               : "bg-red-500/10 text-red-600 dark:text-red-400"
           }`}
         >
-          {value ? "Active" : "Inactive"}
+          {value ? "Ativa" : "Inativa"}
         </span>
       ),
     },
-    { key: "createdAt", label: "Created At", sortable: true },
+    { key: "createdAt", label: "Criada em", sortable: true },
   ],
 
   fields: [
-    { name: "name", label: "Name", type: "text", required: true, placeholder: "Category name" },
-    { name: "description", label: "Description", type: "textarea", placeholder: "Category description", rows: 3 },
+    { name: "name", label: "Nome", type: "text", required: true, placeholder: "Nome da categoria" },
+    { name: "description", label: "Descrição", type: "textarea", placeholder: "Descrição da categoria", rows: 3 },
   ],
 
   toFormValues: (category) => ({

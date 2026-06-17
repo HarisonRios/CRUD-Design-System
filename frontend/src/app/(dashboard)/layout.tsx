@@ -17,19 +17,24 @@ import {
   LogOut,
   Layers,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const navItems = [
-  { label: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
-  { label: "Products", href: "/products", icon: Package },
-  { label: "Categories", href: "/categories", icon: Tag },
-  { label: "Users", href: "/users", icon: Users },
+  { label: "Painel", href: "/dashboard", icon: LayoutDashboard },
+  { label: "Produtos", href: "/products", icon: Package },
+  { label: "Categorias", href: "/categories", icon: Tag },
+  { label: "Usuários", href: "/users", icon: Users },
 ];
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <div className="flex h-screen overflow-hidden bg-background">
@@ -78,20 +83,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           })}
         </nav>
 
-        {/* Footer */}
-        <div className="border-t border-sidebar-border p-3 space-y-1">
-          <Link
-            href="/settings"
-            className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-sidebar-foreground hover:bg-accent transition-colors"
-          >
-            <Settings className="h-4 w-4" />
-            Settings
-          </Link>
-          <button className="w-full flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-sidebar-foreground hover:bg-accent transition-colors">
-            <LogOut className="h-4 w-4" />
-            Logout
-          </button>
-        </div>
+        {/* Footer removed */}
       </aside>
 
       {/* Overlay for mobile */}
@@ -118,10 +110,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           {/* Theme Toggle */}
           <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="rounded-lg p-2 hover:bg-accent transition-colors text-muted-foreground hover:text-foreground"
-            title="Toggle theme"
+            className="rounded-lg p-2 hover:bg-accent transition-colors text-muted-foreground hover:text-foreground flex items-center justify-center w-8 h-8"
+            title="Alternar tema"
           >
-            {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+            {mounted ? (theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />) : null}
           </button>
         </header>
 

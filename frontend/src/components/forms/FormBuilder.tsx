@@ -79,7 +79,7 @@ export function FormBuilder({
                   : "border-input"
               )}
             >
-              <option value="">Select an option...</option>
+              <option value="">Selecione uma opção...</option>
               {field.options?.map((opt) => (
                 <option key={String(opt.value)} value={String(opt.value)}>
                   {opt.label}
@@ -130,10 +130,10 @@ export function FormBuilder({
         {isLoading ? (
           <span className="flex items-center justify-center gap-2">
             <span className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
-            Saving...
+            Salvando...
           </span>
         ) : (
-          "Save"
+          "Salvar"
         )}
       </button>
     </form>
@@ -151,23 +151,23 @@ function buildSchema(fields: FormField[]): z.ZodObject<z.ZodRawShape> {
 
     if (field.type === "number") {
       validator = z.coerce.number({
-        required_error: `${field.label} is required`,
-        invalid_type_error: `${field.label} must be a number`,
+        required_error: `${field.label} é obrigatório`,
+        invalid_type_error: `${field.label} deve ser um número`,
       });
       if (field.min !== undefined) {
         validator = (validator as z.ZodNumber).min(field.min, {
-          message: `${field.label} must be at least ${field.min}`,
+          message: `${field.label} deve ser no mínimo ${field.min}`,
         });
       }
       if (!field.required) validator = validator.optional();
     } else if (field.type === "email") {
-      validator = z.string().email(`${field.label} must be a valid email`);
+      validator = z.string().email(`${field.label} deve ser um e-mail válido`);
       if (!field.required) validator = validator.optional();
     } else {
       validator = z.string();
       if (field.required) {
         validator = (validator as z.ZodString).min(1, {
-          message: `${field.label} is required`,
+          message: `${field.label} é obrigatório`,
         });
       } else {
         validator = validator.optional();

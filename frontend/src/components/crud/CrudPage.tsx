@@ -94,7 +94,7 @@ export function CrudPage<TResponse extends { id: string }, TRequest>({
             )}
           >
             <Download className="h-4 w-4" />
-            Export CSV
+            Exportar CSV
           </button>
           <button
             id={`${queryKey}-create-btn`}
@@ -106,7 +106,7 @@ export function CrudPage<TResponse extends { id: string }, TRequest>({
             )}
           >
             <Plus className="h-4 w-4" />
-            New {config.title.replace(/s$/, "")}
+            Novo
           </button>
         </div>
       </div>
@@ -118,7 +118,7 @@ export function CrudPage<TResponse extends { id: string }, TRequest>({
             {data.totalElements} total
           </span>
           <span>•</span>
-          <span>Page {data.page + 1} of {data.totalPages}</span>
+          <span>Página {data.page + 1} de {data.totalPages}</span>
         </div>
       )}
 
@@ -159,7 +159,7 @@ export function CrudPage<TResponse extends { id: string }, TRequest>({
       <Modal
         isOpen={isCreateOpen}
         onClose={() => setIsCreateOpen(false)}
-        title={`Create ${config.title.replace(/s$/, "")}`}
+        title={`Criar`}
       >
         <FormBuilder
           fields={config.fields}
@@ -172,7 +172,7 @@ export function CrudPage<TResponse extends { id: string }, TRequest>({
       <Modal
         isOpen={!!editItem}
         onClose={() => setEditItem(null)}
-        title={`Edit ${config.title.replace(/s$/, "")}`}
+        title={`Editar`}
       >
         {editItem && (
           <FormBuilder
@@ -192,12 +192,12 @@ export function CrudPage<TResponse extends { id: string }, TRequest>({
       <Modal
         isOpen={!!deleteId}
         onClose={() => setDeleteId(null)}
-        title="Confirm Deletion"
+        title="Confirmar Exclusão"
       >
         <div className="space-y-4">
           <p className="text-sm text-muted-foreground">
-            Are you sure you want to delete this record? This action cannot be undone
-            (soft delete — the record will be marked as inactive).
+            Tem certeza que deseja excluir este registro? Esta ação não pode ser desfeita
+            (soft delete — o registro será marcado como inativo).
           </p>
           <div className="flex gap-2">
             <button
@@ -207,7 +207,7 @@ export function CrudPage<TResponse extends { id: string }, TRequest>({
                 "text-sm font-medium hover:bg-accent transition-colors"
               )}
             >
-              Cancel
+              Cancelar
             </button>
             <button
               id={`${queryKey}-confirm-delete-btn`}
@@ -220,7 +220,7 @@ export function CrudPage<TResponse extends { id: string }, TRequest>({
                 "disabled:opacity-60"
               )}
             >
-              {deleteMutation.isPending ? "Deleting..." : "Delete"}
+              {deleteMutation.isPending ? "Excluindo..." : "Excluir"}
             </button>
           </div>
         </div>

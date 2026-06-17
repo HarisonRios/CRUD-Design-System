@@ -5,10 +5,10 @@ import Link from "next/link";
 export const metadata: Metadata = { title: "Dashboard" };
 
 const stats = [
-  { label: "Total Products", value: "—", icon: Package, color: "text-blue-500", bg: "bg-blue-500/10", href: "/products" },
-  { label: "Categories", value: "—", icon: Tag, color: "text-purple-500", bg: "bg-purple-500/10", href: "/categories" },
-  { label: "Users", value: "—", icon: Users, color: "text-green-500", bg: "bg-green-500/10", href: "/users" },
-  { label: "Activity", value: "Live", icon: TrendingUp, color: "text-orange-500", bg: "bg-orange-500/10", href: "#" },
+  { label: "Total de Produtos", value: "—", icon: Package, color: "text-blue-500", bg: "bg-blue-500/10", href: "/products" },
+  { label: "Categorias", value: "—", icon: Tag, color: "text-purple-500", bg: "bg-purple-500/10", href: "/categories" },
+  { label: "Usuários", value: "—", icon: Users, color: "text-green-500", bg: "bg-green-500/10", href: "/users" },
+  { label: "Atividade", value: "Ao Vivo", icon: TrendingUp, color: "text-orange-500", bg: "bg-orange-500/10", href: "#" },
 ];
 
 export default function DashboardPage() {
@@ -17,10 +17,10 @@ export default function DashboardPage() {
       {/* Welcome Header */}
       <div>
         <h1 className="text-3xl font-bold tracking-tight text-foreground">
-          Welcome to CRUD Design System
+          Bem-vindo ao CRUD Design System
         </h1>
         <p className="mt-2 text-muted-foreground">
-          A reusable full-stack framework — build complete CRUDs with minimal code.
+          Um framework full-stack reutilizável — crie CRUDs completos com o mínimo de código.
         </p>
       </div>
 
@@ -53,29 +53,29 @@ export default function DashboardPage() {
             <Layers className="h-5 w-5 text-primary-foreground" />
           </div>
           <div>
-            <h2 className="text-lg font-bold text-foreground">How the Framework Works</h2>
-            <p className="text-sm text-muted-foreground">Configuration-Driven Architecture</p>
+            <h2 className="text-lg font-bold text-foreground">Como o Framework Funciona</h2>
+            <p className="text-sm text-muted-foreground">Arquitetura Orientada a Configuração</p>
           </div>
         </div>
 
         <div className="grid gap-4 md:grid-cols-3">
           <FrameworkCard
             step="01"
-            title="Define Config"
-            description="Create a CrudConfig object with columns, fields, and entity name."
+            title="Definir Config"
+            description="Crie um objeto CrudConfig com colunas, campos e o nome da entidade."
             code={`const config = {\n  entity: "products",\n  columns: [...],\n  fields: [...]\n}`}
           />
           <FrameworkCard
             step="02"
-            title="Use CrudPage"
-            description="Pass the config to the CrudPage component. That's it."
+            title="Usar o CrudPage"
+            description="Passe a configuração para o componente CrudPage. Só isso."
             code={`<CrudPage\n  config={config}\n  service={service}\n  queryKey="products"\n/>`}
           />
           <FrameworkCard
             step="03"
-            title="Full CRUD Ready"
-            description="List, Create, Edit, Delete, Paginate, Filter, Export — all working."
-            code={`// ✓ DataTable with sorting\n// ✓ Create/Edit modals\n// ✓ Soft delete confirm\n// ✓ CSV export`}
+            title="CRUD Completo Pronto"
+            description="Lista, Cria, Edita, Exclui, Pagina, Filtra, Exporta — tudo funcionando."
+            code={`// ✓ DataTable com ordenação\n// ✓ Modais de Criar/Editar\n// ✓ Confirmação de exclusão\n// ✓ Exportação CSV`}
           />
         </div>
       </div>

@@ -76,7 +76,7 @@ export function DataTable<T extends { id: string }>({
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <input
             type="text"
-            placeholder="Search..."
+            placeholder="Buscar..."
             value={localSearch}
             onChange={(e) => handleSearch(e.target.value)}
             className={cn(
@@ -113,7 +113,7 @@ export function DataTable<T extends { id: string }>({
                 ))}
                 {actions && (
                   <th className="px-4 py-3 text-right font-semibold text-muted-foreground w-24">
-                    Actions
+                    Ações
                   </th>
                 )}
               </tr>
@@ -139,8 +139,8 @@ export function DataTable<T extends { id: string }>({
                   >
                     <div className="flex flex-col items-center gap-2 text-muted-foreground">
                       <Search className="h-10 w-10 opacity-30" />
-                      <p className="font-medium">No records found</p>
-                      <p className="text-xs">Try adjusting your search or create a new record.</p>
+                      <p className="font-medium">Nenhum registro encontrado</p>
+                      <p className="text-xs">Tente ajustar sua busca ou crie um novo registro.</p>
                     </div>
                   </td>
                 </tr>
@@ -177,22 +177,22 @@ export function DataTable<T extends { id: string }>({
       {data && data.totalPages > 1 && (
         <div className="flex items-center justify-between text-sm text-muted-foreground">
           <span>
-            Showing {data.page * data.size + 1}–
-            {Math.min((data.page + 1) * data.size, data.totalElements)} of{" "}
-            {data.totalElements} records
+            Mostrando {data.page * data.size + 1}–
+            {Math.min((data.page + 1) * data.size, data.totalElements)} de{" "}
+            {data.totalElements} registros
           </span>
           <div className="flex items-center gap-1">
             <PaginationButton
               onClick={() => onPageChange?.(0)}
               disabled={data.first}
-              title="First"
+              title="Primeira"
             >
               <ChevronsLeft className="h-4 w-4" />
             </PaginationButton>
             <PaginationButton
               onClick={() => onPageChange?.(data.page - 1)}
               disabled={data.first}
-              title="Previous"
+              title="Anterior"
             >
               <ChevronLeft className="h-4 w-4" />
             </PaginationButton>
@@ -202,14 +202,14 @@ export function DataTable<T extends { id: string }>({
             <PaginationButton
               onClick={() => onPageChange?.(data.page + 1)}
               disabled={data.last}
-              title="Next"
+              title="Próxima"
             >
               <ChevronRight className="h-4 w-4" />
             </PaginationButton>
             <PaginationButton
               onClick={() => onPageChange?.(data.totalPages - 1)}
               disabled={data.last}
-              title="Last"
+              title="Última"
             >
               <ChevronsRight className="h-4 w-4" />
             </PaginationButton>

@@ -15,20 +15,20 @@ import { formatCurrency } from "@/lib/utils";
  */
 export const productConfig: CrudConfig<Product, ProductRequest> = {
   entity: "products",
-  title: "Products",
-  description: "Manage your product catalog",
+  title: "Produtos",
+  description: "Gerencie o catálogo de produtos",
 
   columns: [
-    { key: "name", label: "Name", sortable: true },
+    { key: "name", label: "Nome", sortable: true },
     {
       key: "price",
-      label: "Price",
+      label: "Preço",
       sortable: true,
       render: (value) => formatCurrency(Number(value)),
     },
     {
       key: "stock",
-      label: "Stock",
+      label: "Estoque",
       sortable: true,
       render: (value) => (
         <span
@@ -40,13 +40,13 @@ export const productConfig: CrudConfig<Product, ProductRequest> = {
               : "bg-red-500/10 text-red-600 dark:text-red-400"
           }`}
         >
-          {String(value)} units
+          {String(value)} unid
         </span>
       ),
     },
     {
       key: "category",
-      label: "Category",
+      label: "Categoria",
       render: (value) => {
         const cat = value as { name: string } | null;
         return cat?.name ?? "—";
@@ -63,19 +63,19 @@ export const productConfig: CrudConfig<Product, ProductRequest> = {
               : "bg-red-500/10 text-red-600 dark:text-red-400"
           }`}
         >
-          {value ? "Active" : "Inactive"}
+          {value ? "Ativo" : "Inativo"}
         </span>
       ),
     },
-    { key: "createdAt", label: "Created At", sortable: true },
+    { key: "createdAt", label: "Criado em", sortable: true },
   ],
 
   fields: [
-    { name: "name", label: "Name", type: "text", required: true, placeholder: "Product name" },
-    { name: "description", label: "Description", type: "textarea", placeholder: "Product description", rows: 3 },
-    { name: "price", label: "Price (R$)", type: "number", required: true, placeholder: "0.00", min: 0 },
-    { name: "stock", label: "Stock", type: "number", required: true, placeholder: "0", min: 0 },
-    { name: "categoryId", label: "Category ID", type: "text", placeholder: "Category UUID (optional)" },
+    { name: "name", label: "Nome", type: "text", required: true, placeholder: "Nome do produto" },
+    { name: "description", label: "Descrição", type: "textarea", placeholder: "Descrição do produto", rows: 3 },
+    { name: "price", label: "Preço (R$)", type: "number", required: true, placeholder: "0.00", min: 0 },
+    { name: "stock", label: "Estoque", type: "number", required: true, placeholder: "0", min: 0 },
+    { name: "categoryId", label: "ID da Categoria", type: "text", placeholder: "UUID da Categoria (opcional)" },
   ],
 
   toFormValues: (product) => ({
