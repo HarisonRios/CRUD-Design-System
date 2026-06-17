@@ -1,6 +1,6 @@
 import { Repository, FindOptionsWhere } from 'typeorm';
 import { NotFoundException } from '@nestjs/common';
-import { BaseEntity } from '../entities/base.entity';
+import { BaseEntity } from '../domain/entities/base.entity';
 
 /**
  * Resposta paginada — espelha o PaginatedResponse.java do Spring Boot.
@@ -48,7 +48,7 @@ export abstract class AbstractGenericService<
 
   async findById(id: string): Promise<TResponse> {
     const entity = await this.repository.findOne({
-      where: { id, active: true } as FindOptionsWhere<TEntity>,
+      where: { id, active: true } as any as FindOptionsWhere<TEntity>,
     });
     if (!entity) {
       throw new NotFoundException(`${this.getEntityName()} with id '${id}' not found`);
@@ -58,7 +58,7 @@ export abstract class AbstractGenericService<
 
   async findAll(page = 0, size = 10): Promise<PaginatedResponse<TResponse>> {
     const [items, total] = await this.repository.findAndCount({
-      where: { active: true } as FindOptionsWhere<TEntity>,
+      where: { active: true } as any as FindOptionsWhere<TEntity>,
       skip: page * size,
       take: size,
       order: { createdAt: 'DESC' } as never,
@@ -79,7 +79,7 @@ export abstract class AbstractGenericService<
 
   async update(id: string, dto: TRequest): Promise<TResponse> {
     const entity = await this.repository.findOne({
-      where: { id, active: true } as FindOptionsWhere<TEntity>,
+      where: { id, active: true } as any as FindOptionsWhere<TEntity>,
     });
     if (!entity) {
       throw new NotFoundException(`${this.getEntityName()} with id '${id}' not found`);
@@ -91,7 +91,7 @@ export abstract class AbstractGenericService<
 
   async delete(id: string): Promise<void> {
     const entity = await this.repository.findOne({
-      where: { id, active: true } as FindOptionsWhere<TEntity>,
+      where: { id, active: true } as any as FindOptionsWhere<TEntity>,
     });
     if (!entity) {
       throw new NotFoundException(`${this.getEntityName()} with id '${id}' not found`);
