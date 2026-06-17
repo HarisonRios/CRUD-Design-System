@@ -1,11 +1,11 @@
+"use client";
+
 import type { Metadata } from "next";
 import { CrudPage } from "@/components/crud/CrudPage";
 import { productService } from "@/services/generic.service";
 import { productConfig } from "./config";
 
-export const metadata: Metadata = {
-  title: "Products",
-};
+// Metadata is not allowed in Client Components
 
 /**
  * ProductsPage — Página de produtos.
